@@ -1,5 +1,5 @@
 import { kea } from 'kea'
-import { appLogicType } from './appLogicType'
+import type { appLogicType } from './appLogicType'
 
 export const appLogic = kea<appLogicType>({
   path: ['appLogic'],
