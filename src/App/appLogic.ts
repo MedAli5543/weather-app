@@ -99,7 +99,9 @@ export const appLogic = kea<appLogicType>([
               'X-Api-Key': API_KEY,
             },
           })
-        } catch (error) {}
+        } catch (error) {
+          setFetchError('Something went wrong!')
+        }
 
         const data = await response.json()
 
@@ -109,8 +111,8 @@ export const appLogic = kea<appLogicType>([
           return { latitude, longitude }
         }
 
-        setFetchError('Unvalid City Name! Please enter an valid city name!')
-        return message.error('Unvalid City Name! Please enter an valid city name!')
+        setFetchError('Something went wrong!')
+        return message.error('Something went wrong!')
       }
 
       try {
@@ -124,12 +126,10 @@ export const appLogic = kea<appLogicType>([
           daily: { temperature_2m_max, time },
         } = data
 
-        console.log('___________RES_________', city, latitude, longitude, data)
-
         setTemperatures(temperature_2m_max)
         setDates(time)
       } catch (error) {
-        console.log('___________ERROR________', error, city)
+        setFetchError('Something went wrong!')
       }
     },
   })),
