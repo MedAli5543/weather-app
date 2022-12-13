@@ -1,5 +1,6 @@
 import { actions, kea, listeners, path, reducers, selectors, afterMount } from 'kea'
 import { message } from 'antd'
+import axios from 'axios'
 
 import type { appLogicType } from './appLogicType'
 
@@ -94,7 +95,7 @@ export const appLogic = kea<appLogicType>([
         let response
 
         try {
-          response = await fetch(API_URL + cityName, {
+          response = await axios.get(API_URL + cityName, {
             headers: {
               'X-Api-Key': API_KEY,
             },
@@ -103,10 +104,8 @@ export const appLogic = kea<appLogicType>([
           setFetchError('Something went wrong!')
         }
 
-        const data = await response.json()
-
-        if (data.length) {
-          const { latitude, longitude } = data[0]
+        if (response.data.length) {
+          const { latitude, longitude } = response.data[0]
 
           return { latitude, longitude }
         }
@@ -120,11 +119,10 @@ export const appLogic = kea<appLogicType>([
 
         const API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max&timezone=auto&past_days=1&temperature_unit=${temperatureUnit}`
 
-        const response = await fetch(API_URL)
-        const data = await response.json()
+        const response = await axios.get(API_URL)
         const {
           daily: { temperature_2m_max, time },
-        } = data
+        } = response.data
 
         setTemperatures(temperature_2m_max)
         setDates(time)
