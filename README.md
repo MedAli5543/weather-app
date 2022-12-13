@@ -18,7 +18,6 @@ npm start
 - [x] Design Considerations: Scalability, Portability, Maintainability
 - [x] UI: [ant-design](https://ant.design/) and vanilla css (flexbox layout)
 - [x] Modern Graph with [AntVision](https://antv.vision/)
-- [x] Customizable and Reusable Table component built with (React.js)
 - [x] Module-based folder structure
 - [x] State management ([Kea.js](https://keajs.org))
 - [x] Type checking (TypeScript)
