@@ -21,7 +21,11 @@ export function App() {
             status="500"
             title="500"
             subTitle="Sorry, something went wrong."
-            extra={<Button type="primary">Back Home</Button>}
+            extra={
+              <Button onClick={() => window.location.reload()} type="primary">
+                Back Home
+              </Button>
+            }
           />
         ) : (
           <>
