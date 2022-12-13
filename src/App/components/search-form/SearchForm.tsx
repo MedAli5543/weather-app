@@ -4,6 +4,8 @@ import { Button, Input, Select } from 'antd'
 
 import { appLogic } from '../../appLogic'
 
+import './styles.scss'
+
 export function SearchForm() {
   const { setCity, setTemperatureUnit, fetchWeatherData } = useActions(appLogic)
   const { city, temperatureUnit } = useValues(appLogic)
