@@ -3,7 +3,6 @@ import { useValues } from 'kea'
 import { Skeleton } from 'antd'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
-import { DotChartOutlined } from '@ant-design/icons'
 
 import { appLogic } from '../../appLogic'
 
@@ -17,17 +16,11 @@ export function WeatherSlider() {
   return (
     <div>
       {isLoading ? (
-        <>
-          <Skeleton.Node active={true} style={{ width: 269.333, height: 300, marginRight: 30 }}>
-            <DotChartOutlined style={{ fontSize: 40, color: '#bfbfbf' }} />
-          </Skeleton.Node>
-          <Skeleton.Node active={true} style={{ width: 269.333, height: 300, marginRight: 30 }}>
-            <DotChartOutlined style={{ fontSize: 40, color: '#bfbfbf' }} />
-          </Skeleton.Node>
-          <Skeleton.Node active={true} style={{ width: 269.333, height: 300 }}>
-            <DotChartOutlined style={{ fontSize: 40, color: '#bfbfbf' }} />
-          </Skeleton.Node>
-        </>
+        <div>
+          <Skeleton.Node active={true} style={{ width: 269.333, height: 300, marginRight: 30 }} />
+          <Skeleton.Node active={true} style={{ width: 269.333, height: 300, marginRight: 30 }} />
+          <Skeleton.Node active={true} style={{ width: 269.333, height: 300 }} />
+        </div>
       ) : (
         <Swiper slidesPerView={3} spaceBetween={30} navigation modules={[Navigation]} className="mySwiper">
           {weatherData.map(({ date, temperature, temperatureUnit }, index) => (
